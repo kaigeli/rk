@@ -1,0 +1,15 @@
+diff --git a/rc.local b/rc.local
+index 2522962..7af94b5 100755
+--- a/rc.local
++++ b/rc.local
+@@ -13,6 +13,10 @@
+ 
+ # Generate the SSH keys if non-existent
+ # test -f /etc/ssh/ssh_host_dsa_key || dpkg-reconfigure openssh-server
++echo performance > /sys/devices/system/cpu/cpufreq/policy0/scaling_governor
++echo performance > /sys/devices/system/cpu/cpufreq/policy4/scaling_governor
++echo userspace > /sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/governor
++echo 800000000 > /sys/devices/platform/ff9a0000.gpu/devfreq/ff9a0000.gpu/userspace/set_freq
+ systemctl start ssh.service
+ 
+ exit 0
